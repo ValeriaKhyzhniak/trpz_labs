@@ -2,13 +2,20 @@ from abc import ABC, abstractmethod
 
 
 class IJSONSchemaService(ABC):
-
     @abstractmethod
-    def save_file(self):
+    def open_file(self, schema_text):
         pass
 
     @abstractmethod
-    def auto_save(self):
+    def save_as_file(self, schema_text):
+        pass
+
+    @abstractmethod
+    def save_file(self, schema_text, file_name):
+        pass
+
+    @abstractmethod
+    def auto_save(self, schema_text, opened_file):
         pass
 
     @abstractmethod

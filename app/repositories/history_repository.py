@@ -3,7 +3,7 @@ from repository import Repository
 from app.models.json_history import JSONHistory
 
 
-class HistoryRepository(IHistoryRepository, Repository, JSONHistory):
+class HistoryRepository(IHistoryRepository, Repository):
     def __init__(self, json_history: JSONHistory):
         super().__init__()
         self.json_history = json_history
