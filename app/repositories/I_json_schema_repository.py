@@ -1,9 +1,9 @@
 from abc import *
-from I_repository import IRepository
+from app.repositories.I_repository import IRepository
 
 
 class IJSONSchemaRepository(IRepository):
 
     @abstractmethod
-    def get_by_name(self):
+    def get_by_name(self, name):
         pass

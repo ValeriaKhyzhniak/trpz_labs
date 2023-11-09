@@ -2,7 +2,7 @@ from I_history_service import IHistoryService
 from app.repositories.I_history_repository import IHistoryRepository
 
 
-class JSONSchemaService(IHistoryService):
+class JSONHistoryService(IHistoryService):
 
     def __init__(self, history_repository: IHistoryRepository):
         super().__init__()
