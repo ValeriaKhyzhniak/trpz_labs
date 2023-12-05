@@ -1,5 +1,5 @@
 from abc import *
-from I_repository import IRepository
+from app.repositories.I_repository import IRepository
 
 
 class IHistoryRepository(IRepository):

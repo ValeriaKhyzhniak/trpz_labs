@@ -2,26 +2,27 @@ from app.repositories.I_json_schema_repository import IJSONSchemaRepository
 from app.services.I_json_schema_service import IJSONSchemaService
 from tkinter import *
 from tkinter.filedialog import *
+from app.views.strategy.edit_page_view_strategy import EditPageViewStrategy
+from app.views.strategy.view_context import ViewContext
 
 
 class JSONSchemaService(IJSONSchemaService):
-    def __init__(self, schema_repository: IJSONSchemaRepository):
+    def __init__(self):
         super().__init__()
-        self.schema_repository = schema_repository
-
+        
     def open_file(self, schema_text):
         # Відкриваємо діалогове вікно, яке дозволяє користувачеві вибрати файл
         # Записуємо шлях до файлу в змінну
-        opened_file = askopenfilename()
+        file = askopenfilename()
         # Відкриваємо файл та записуємо вміст в змінну content
-        f = open(opened_file, "r", encoding="utf-8")
+        f = open(file, "r", encoding="utf-8")
         content = f.read()
         # Очищуємо простір вікна редактора
         schema_text.delete(1.0, END)
         # Вставляємо в редактор значення змінної content
         schema_text.insert(END, content)
         # Повертаємо шлях до файлу
-        return opened_file
+        return file
 
     # Зберігаємо зміни у поточному відкритому файлі
     def save_file(self, schema_text, file_name):
