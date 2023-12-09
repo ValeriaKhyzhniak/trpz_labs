@@ -1,35 +1,37 @@
 import tkinter as tk
 from tkinter import *
-import ctypes
-from tkinter import ttk
-
-from app.views.strategy.I_view_strategy import IViewStrategy
+from app.views.strategy.interface_view_strategy import InterfaceViewStrategy
+from app.views.view_elements.toolbar_view import ToolbarView
 
 
-class EditPageViewStrategy(IViewStrategy):
+class EditPageViewStrategy(InterfaceViewStrategy):
     font = ('Consolas 20', 18)
     # Створюємо змінну для збереження шляху відкритого файлу
     _opened_file = ''
     # Створюємо змінну для збереження вікна з текстом
     _schema_text = Text
+    toolbar_view = ToolbarView()
 
     # Ініціалізуємо атрибути класу
     def __init__(self):
         super().__init__()
 
     def create_operating_window(self, edit_page):
+        self.main_frame = Frame(edit_page, padx=25, pady=20)
+
         # Створюємо об'єкт рамки
-        self.schema_frame = LabelFrame(edit_page, width=100, height=70, text='JSONSchema', padx=25, pady=20,
+        self.schema_frame = LabelFrame(self.main_frame, text='JSONSchema', padx=25, pady=20,
                                        font=self.font)
+        (self.schema_frame.grid(column=1, row=0))
         # Створюємо об'єкт текстового поля для редагування JSON-схеми
-        self.schema_text = Text(self.schema_frame, font=self.font, width=40, height=20, wrap=tk.NONE)
+        self.schema_text = Text(self.schema_frame, width=35, height=15, font=self.font, wrap=tk.NONE)
         # Розташовуємо текстове поле у рамці
         self.schema_text.pack(fill=BOTH, expand=True)
-        # Розташовуємо рамку у лівій частині вікна
-        self.schema_frame.pack(side=LEFT, fill=BOTH, expand=True)
-        edit_page.add(self.schema_frame, text='name')
-        # Розташуємо вкладку вгорі сторінки
-        edit_page.place(relx=0, rely=0, anchor='nw')
+        self.toolbar = self.toolbar_view.create_toolbar(self.main_frame, self.schema_text)
+        # Розташовуємо панель інструментів
+        self.toolbar.grid(row=0, column=0)
+        self.main_frame.pack()
+        edit_page.add(self.main_frame, text='name')
         return self.schema_text
 
     @property

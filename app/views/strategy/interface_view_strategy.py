@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class IViewStrategy(ABC):
+class InterfaceViewStrategy(ABC):
     @abstractmethod
     def create_operating_window(self, window):
         pass

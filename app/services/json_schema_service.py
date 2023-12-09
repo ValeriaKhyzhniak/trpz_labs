@@ -1,9 +1,7 @@
-from app.repositories.I_json_schema_repository import IJSONSchemaRepository
+import json
 from app.services.I_json_schema_service import IJSONSchemaService
 from tkinter import *
 from tkinter.filedialog import *
-from app.views.strategy.edit_page_view_strategy import EditPageViewStrategy
-from app.views.strategy.view_context import ViewContext
 
 
 class JSONSchemaService(IJSONSchemaService):
@@ -57,8 +55,17 @@ class JSONSchemaService(IJSONSchemaService):
         # Викликаємо метод save_file
         self.save_file(schema_text, opened_file)
 
-    def validate_schema(self):
-        pass
+    def validate_schema(self, json_text_frame):
+        print("validation.....")
+        # Записуємо вміст редактора в змінну
+        json_text = json_text_frame.get(1.0, END)
+        try:
+            json.loads(json_text)
+            print("JSON is valid.")
+            return True
+        except json.JSONDecodeError as e:
+            print(f"JSON is not valid. Error: {e}")
+            return False
 
     def syntax_highlighting(self):
         pass
