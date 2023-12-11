@@ -1,6 +1,4 @@
-import tkinter as tk
 from tkinter import *
-import ctypes
 from app.services.json_schema_service import JSONSchemaService
 from app.views.create_new_page import CreateNewPage
 from app.views.strategy.edit_page_view_strategy import EditPageViewStrategy
@@ -28,7 +26,7 @@ class MenuView:
                                    , command=lambda: self.json_schema_service.
                                    save_file(EditPageViewStrategy.schema_text, EditPageViewStrategy.opened_file))
         self.file_menu.add_command(label="Зберегти як...", font='10'
-                                   # , command=lambda: self.json_schema_service.save_as_file()
+                                   # , command_puttern=lambda: self.json_schema_service.save_as_file()
                                     )
         # self.protocol("WM_DELETE_WINDOW", self.on_closing)
         return self.menu

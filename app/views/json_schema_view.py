@@ -1,5 +1,4 @@
 from tkinter import ttk
-import tkinter as tk
 from tkinter import *
 import ctypes
 from app.views.view_elements.menu_view import MenuView

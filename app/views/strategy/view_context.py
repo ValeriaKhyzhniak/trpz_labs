@@ -1,10 +1,10 @@
-from app.views.strategy.I_view_strategy import IViewStrategy
+from app.views.strategy.interface_view_strategy import InterfaceViewStrategy
 
 
 class ViewContext:
-    strategy = IViewStrategy
+    strategy = InterfaceViewStrategy
 
-    def __init__(self, strategy: IViewStrategy):
+    def __init__(self, strategy: InterfaceViewStrategy):
         super().__init__()
         self.strategy = strategy
 

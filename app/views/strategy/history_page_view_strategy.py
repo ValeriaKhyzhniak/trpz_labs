@@ -1,7 +1,7 @@
-from app.views.strategy.I_view_strategy import IViewStrategy
+from app.views.strategy.interface_view_strategy import InterfaceViewStrategy
 
 
-class HistoryPageViewStrategy(IViewStrategy):
+class HistoryPageViewStrategy(InterfaceViewStrategy):
 
     def create_operating_window(self, window):
         pass

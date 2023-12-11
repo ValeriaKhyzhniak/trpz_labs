@@ -19,7 +19,7 @@ class IJSONSchemaService(ABC):
         pass
 
     @abstractmethod
-    def validate_schema(self):
+    def validate_schema(self, json_text):
         pass
 
     @abstractmethod

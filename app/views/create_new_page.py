@@ -17,6 +17,3 @@ class CreateNewPage:
         # Записуємо значення в сеттери
         EditPageViewStrategy.opened_file = op_file
         EditPageViewStrategy.schema_text = schema_text
-
-    def create_new_window(self):
-        pass

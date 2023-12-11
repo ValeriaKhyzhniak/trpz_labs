@@ -1,12 +1,9 @@
 from tkinter import *
-from tkinter import ttk
-
-from app.services.json_schema_service import JSONSchemaService
 from app.views.create_new_page import CreateNewPage
-from app.views.strategy.I_view_strategy import IViewStrategy
+from app.views.strategy.interface_view_strategy import InterfaceViewStrategy
 
 
-class FirstPageViewStrategy(IViewStrategy):
+class FirstPageViewStrategy(InterfaceViewStrategy):
 
     # Створюємо об'єкт класу CreateNewPage()
     create_new_window = CreateNewPage()
@@ -26,9 +23,9 @@ class FirstPageViewStrategy(IViewStrategy):
                                  , command=lambda: self.create_new_window.open_new_window(window)
                                  )
         create_file_button = Button(first_page_frame, width=self.width, text="Create file...", font=self.font
-                                    # , command=lambda: self.create_new_window.create_new_window()
+                                    # , command_puttern=lambda: self.create_new_window.create_new_window()
                                     )
-        # Розташовуємо їх їх
+        # Розташовуємо їх
         first_page_label.grid(row=0, column=0)
         open_file_button.grid(row=1, column=0)
         create_file_button.grid(row=2, column=0)
