@@ -26,7 +26,7 @@ class MenuView:
                                    , command=lambda: self.json_schema_service.
                                    save_file(EditPageViewStrategy.schema_text, EditPageViewStrategy.opened_file))
         self.file_menu.add_command(label="Зберегти як...", font='10'
-                                   # , command_puttern=lambda: self.json_schema_service.save_as_file()
+                                   # , command_pattern=lambda: self.json_schema_service.save_as_file()
                                     )
         # self.protocol("WM_DELETE_WINDOW", self.on_closing)
         return self.menu
