@@ -1,5 +1,5 @@
 from app.services.json_schema_service import JSONSchemaService
-from app.views.command_puttern.interface_command import InterfaceCommand
+from app.views.command_pattern.interface_command import InterfaceCommand
 
 
 class ValidateJSONCommand(InterfaceCommand):
@@ -12,5 +12,4 @@ class ValidateJSONCommand(InterfaceCommand):
 
     def execute(self):
         # Викликаємо метод валідації json
-        self.json_schema_service.validate_schema(self.schema_text)
-        print("Validation completed!")
+        return self.json_schema_service.validate_schema(self.schema_text)

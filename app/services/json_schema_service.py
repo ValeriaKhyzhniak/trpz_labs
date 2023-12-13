@@ -56,16 +56,13 @@ class JSONSchemaService(IJSONSchemaService):
         self.save_file(schema_text, opened_file)
 
     def validate_schema(self, json_text_frame):
-        print("validation.....")
         # Записуємо вміст редактора в змінну
         json_text = json_text_frame.get(1.0, END)
         try:
             json.loads(json_text)
-            print("JSON is valid.")
-            return True
+            return "JSON is valid."
         except json.JSONDecodeError as e:
-            print(f"JSON is not valid. Error: {e}")
-            return False
+            return f"JSON is not valid. Error: {e}"
 
     def syntax_highlighting(self):
         pass

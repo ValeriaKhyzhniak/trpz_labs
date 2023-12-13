@@ -23,7 +23,7 @@ class FirstPageViewStrategy(InterfaceViewStrategy):
                                  , command=lambda: self.create_new_window.open_new_window(window)
                                  )
         create_file_button = Button(first_page_frame, width=self.width, text="Create file...", font=self.font
-                                    # , command_puttern=lambda: self.create_new_window.create_new_window()
+                                    # , command_pattern=lambda: self.create_new_window.create_new_window()
                                     )
         # Розташовуємо їх
         first_page_label.grid(row=0, column=0)

@@ -1,5 +1,5 @@
 from app.services.json_schema_service import JSONSchemaService
-from app.views.command_puttern.interface_command import InterfaceCommand
+from app.views.command_pattern.interface_command import InterfaceCommand
 
 
 class FlattenSchemaCommand(InterfaceCommand):
