@@ -6,10 +6,10 @@ class FlattenSchemaCommand(InterfaceCommand):
     # Створюємо об'єкт класу JSONSchemaService()
     json_schema_service = JSONSchemaService()
 
-    def __init__(self):
+    def __init__(self, schema_text):
         super().__init__()
+        self.schema_text = schema_text
 
     def execute(self):
         # Викликаємо метод для перетворення json в flatten вигляд
-        self.json_schema_service.flatten_schema()
-        print("JSON to flatten view completed!")
+        return self.json_schema_service.flatten_schema(self.schema_text)

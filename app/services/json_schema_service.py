@@ -2,6 +2,8 @@ import json
 from app.services.I_json_schema_service import IJSONSchemaService
 from tkinter import *
 from tkinter.filedialog import *
+from pandas import *
+from pandas import json_normalize
 
 
 class JSONSchemaService(IJSONSchemaService):
@@ -73,5 +75,10 @@ class JSONSchemaService(IJSONSchemaService):
     def export_schema(self):
         pass
 
-    def flatten_schema(self):
-        pass
+    def flatten_schema(self, json_text_frame):
+        # Записуємо вміст редактора в змінну
+        json_text = json_text_frame.get(1.0, END)
+        # Розпакування JSON-об'єкта
+        flat_data = json_normalize(json.loads(json_text))
+        return flat_data
+
