@@ -35,5 +35,5 @@ class IJSONSchemaService(ABC):
         pass
 
     @abstractmethod
-    def flatten_schema(self):
+    def flatten_schema(self, json_text_frame):
         pass

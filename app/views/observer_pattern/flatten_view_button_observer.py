@@ -1,10 +1,10 @@
 from app.views.observer_pattern.observer import Observer
-from app.views.template_method.validation_result_page_former import ValidationResultPageFormer
+from app.views.template_method.json_to_flatten_view_result_page_former import JSONToFlattenViewResultPageFormer
 
 
-class ValidateButtonObserver(Observer):
+class FlattenViewButtonObserver(Observer):
     def update(self, message):
         # Створюємо об'єкт класу ValidationResultPageFormer
-        result_page_former = ValidationResultPageFormer()
+        result_page_former = JSONToFlattenViewResultPageFormer()
         # Викликаємо метод execute()
         result_page_former.execute(message)

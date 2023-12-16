@@ -1,11 +1,12 @@
 from tkinter import *
 from app.services.json_schema_service import JSONSchemaService
-from app.views.command_pattern.button_involker import ButtonInvoker
 from app.views.command_pattern.export_json_command import ExportJSONCommand
 from app.views.command_pattern.flatten_schema_command import FlattenSchemaCommand
 from app.views.command_pattern.validate_json_command import ValidateJSONCommand
+from app.views.observer_pattern.export_button_observer import ExportButtonObserver
+from app.views.observer_pattern.flatten_view_button_observer import FlattenViewButtonObserver
 from app.views.observer_pattern.validate_button_observer import ValidateButtonObserver
-from app.views.observer_pattern.validate_button_subject import ValidateButtonSubject
+from app.views.observer_pattern.button_subject import ButtonSubject
 
 
 class ToolbarView:
@@ -22,22 +23,26 @@ class ToolbarView:
         # Створюємо команду валідації
         validate_json_command = ValidateJSONCommand(schema_text)
         # Додаємо кнопку для валідації JSON-схеми
-        self.validate_button = ValidateButtonSubject(self.toolbar, "Валідувати", validate_json_command)
+        self.validate_button = ButtonSubject(self.toolbar, "Валідувати", validate_json_command)
         # Створюємо спостерігача
-        observer = ValidateButtonObserver()
+        validate_observer = ValidateButtonObserver()
         # Додаємо спостерігача для
-        self.validate_button.add_observer(observer)
+        self.validate_button.add_observer(validate_observer)
         # Створюємо команду експорту validate_button
         export_json_command = ExportJSONCommand()
         # Додаємо кнопку для експорту JSON-схеми як таблиці Markdown
-        self.export_button = Button(self.toolbar, text="Експортувати", command=ButtonInvoker(export_json_command).invoke)
-        # self.export_button.grid(row=1, column=0, pady=20, padx=0)
-        self.export_button.pack()
+        self.export_button = ButtonSubject(self.toolbar, "Експортувати", export_json_command)
+        # Створюємо спостерігача
+        export_observer = ExportButtonObserver()
+        # Додаємо спостерігача для
+        self.export_button.add_observer(export_observer)
         # Створюємо команду перетворення JSON-схеми в "flatten" вигляд
-        flatten_schema_command = FlattenSchemaCommand()
+        flatten_schema_command = FlattenSchemaCommand(schema_text)
         # Додаємо кнопку для перетворення JSON-схеми в "flatten" вигляд
-        self.flatten_button = Button(self.toolbar, text="Flatten view", command=ButtonInvoker(flatten_schema_command).invoke)
-        # self.flatten_button.grid(row=2, column=0, pady=20, padx=0)
-        self.flatten_button.pack()
+        self.flatten_button = ButtonSubject(self.toolbar, "Flatten view", flatten_schema_command)
+        # Створюємо спостерігача
+        flatten_observer = FlattenViewButtonObserver()
+        # Додаємо спостерігача для
+        self.flatten_button.add_observer(flatten_observer)
         return self.toolbar
 

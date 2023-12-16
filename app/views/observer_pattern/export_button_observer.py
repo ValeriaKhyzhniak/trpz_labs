@@ -1,10 +1,10 @@
 from app.views.observer_pattern.observer import Observer
-from app.views.template_method.validation_result_page_former import ValidationResultPageFormer
+from app.views.template_method.export_result_page_former import ExportResultPageFormer
 
 
-class ValidateButtonObserver(Observer):
+class ExportButtonObserver(Observer):
     def update(self, message):
         # Створюємо об'єкт класу ValidationResultPageFormer
-        result_page_former = ValidationResultPageFormer()
+        result_page_former = ExportResultPageFormer()
         # Викликаємо метод execute()
         result_page_former.execute(message)
