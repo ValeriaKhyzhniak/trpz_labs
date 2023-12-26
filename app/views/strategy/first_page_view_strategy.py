@@ -4,7 +4,6 @@ from app.views.strategy.interface_view_strategy import InterfaceViewStrategy
 
 
 class FirstPageViewStrategy(InterfaceViewStrategy):
-
     # Створюємо об'єкт класу CreateNewPage()
     create_new_window = CreateNewPage()
     font = ('Consolas 20', 18)
